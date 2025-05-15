@@ -2,6 +2,7 @@ extends Node2D
 
 
 func _ready():
+	print("this is the zha monster's branch of git hub repo")
 	selectStuff(Vector2(5,5),18)
 
 func selectStuff(center, attackrange):
