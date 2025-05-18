@@ -267,6 +267,13 @@ script = ExtResource("4_0hol4")
 
 [node name="PlayerButtons" type="Node2D" parent="."]
 
+[node name="Label" type="Label" parent="PlayerButtons"]
+offset_left = 552.0
+offset_top = 8.0
+offset_right = 633.0
+offset_bottom = 31.0
+text = "P1 Money:"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerButtons"]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -308,5 +315,6 @@ text = "End Turn"
 
 [node name="TroopHolder" type="Node2D" parent="."]
 
+[connection signal="pressed" from="PlayerButtons/HBoxContainer/Button6" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="PlayerButtons/HBoxContainer/Button7" to="." method="_on_moved_pressed"]
 [connection signal="pressed" from="PlayerButtons/HBoxContainer/Button8" to="." method="endTurn"]

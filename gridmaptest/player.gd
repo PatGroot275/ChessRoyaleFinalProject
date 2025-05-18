@@ -1,3 +1,3 @@
 extends Node2D
 
-var money = 20
+var money = 10
