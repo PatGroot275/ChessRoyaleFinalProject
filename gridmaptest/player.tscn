@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://b40yk2frhpqlo"]
+
+[ext_resource type="Script" uid="uid://dyecoxchl21e6" path="res://player.gd" id="1_4flbx"]
+
+[node name="Player1" type="Node2D"]
+script = ExtResource("1_4flbx")
+
+[node name="Player1Buttons" type="VBoxContainer" parent="."]
+offset_top = 192.0
+offset_right = 83.0
+offset_bottom = 433.0
+scale = Vector2(0.8, 0.8)
+
+[node name="Button" type="Button" parent="Player1Buttons"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Knight"
+
+[node name="Button2" type="Button" parent="Player1Buttons"]
+layout_mode = 2
+text = "Calvalry"
+
+[node name="Button3" type="Button" parent="Player1Buttons"]
+layout_mode = 2
+text = "Merchant"
+
+[node name="Button4" type="Button" parent="Player1Buttons"]
+layout_mode = 2
+text = "Archer"
+
+[node name="Button5" type="Button" parent="Player1Buttons"]
+layout_mode = 2
+text = "Giant"
+
+[node name="Button6" type="Button" parent="Player1Buttons"]
+layout_mode = 2
+disabled = true
+text = "Attack"
+
+[node name="Button7" type="Button" parent="Player1Buttons"]
+layout_mode = 2
+disabled = true
+text = "Move"
+
+[node name="Button8" type="Button" parent="Player1Buttons"]
+layout_mode = 2
+text = "End Turn"
