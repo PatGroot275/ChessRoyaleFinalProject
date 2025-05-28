@@ -1,0 +1,84 @@
+Adding sound to a Godot game involves the following steps:
+
+---
+
+### ✅ 1. **Prepare Your Audio File**
+
+* Supported formats: `.wav`, `.ogg`, `.mp3` (OGG is preferred for looping music; WAV for short sound effects).
+* Place your audio file inside the `res://` folder of your Godot project (e.g., `res://assets/sounds/`).
+
+---
+
+### ✅ 2. **Add an Audio Node to Your Scene**
+
+There are two main nodes for sound:
+
+| Use Case                | Node Type             |
+| ----------------------- | --------------------- |
+| For music or ambience   | `AudioStreamPlayer`   |
+| For 3D positional sound | `AudioStreamPlayer3D` |
+
+#### Steps:
+
+1. Open your scene.
+2. In the **Scene Tree**, click **+ Add Child Node**.
+3. Search and add `AudioStreamPlayer`.
+4. Rename it (e.g., `MusicPlayer` or `SFXPlayer`).
+
+---
+
+### ✅ 3. **Assign an Audio File**
+
+1. Select the `AudioStreamPlayer` node.
+2. In the **Inspector**, look for the **Stream** property.
+3. Click the file icon and choose your audio file.
+
+---
+
+### ✅ 4. **Play the Sound**
+
+You can play it in two ways:
+
+#### Option A: Automatically on Scene Load
+
+* Select the `AudioStreamPlayer`.
+* In the Inspector, check the box **Autoplay**.
+
+#### Option B: From a Script
+
+Attach this to any node in the scene (e.g., `Main.gd`):
+
+```gdscript
+func _ready():
+    $AudioStreamPlayer.play()
+```
+
+> 📍 **Where to run this**: This script goes into a node’s attached `.gd` file inside Godot's built-in script editor. Make sure it runs in a scene where the `AudioStreamPlayer` node exists.
+
+---
+
+### ✅ 5. **Control the Sound (Optional)**
+
+```gdscript
+# Play
+$AudioStreamPlayer.play()
+
+# Pause
+$AudioStreamPlayer.stop()
+
+# Change volume
+$AudioStreamPlayer.volume_db = -10  # Lower is quieter
+
+# Looping
+$AudioStreamPlayer.stream.loop = true
+```
+
+---
+
+### ✅ 6. **Test the Game**
+
+Click **Play Scene (F6)** to test your sound in action.
+
+---
+
+Let me know if you're using 2D or 3D, or want to trigger sounds on events like button clicks — I can guide you with examples.
