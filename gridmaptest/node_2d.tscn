@@ -1,0 +1,198 @@
+[gd_scene load_steps=13 format=3 uid="uid://bftxosjhvgnhb"]
+
+[ext_resource type="Script" uid="uid://c5v12yps4sswn" path="res://node_2d.gd" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://dyecoxchl21e6" path="res://player.gd" id="3_epypp"]
+[ext_resource type="Texture2D" uid="uid://cp3jkh6jyf0yy" path="res://Actual_Characters-removebg-preview.png" id="3_kdubu"]
+[ext_resource type="Texture2D" uid="uid://dyik5vglomn2c" path="res://Highlights.png" id="3_q6r6c"]
+[ext_resource type="Script" uid="uid://c5txbartbju2d" path="res://player_2.gd" id="4_0hol4"]
+[ext_resource type="Texture2D" uid="uid://bgxwlybgstk8e" path="res://Official Board.png" id="6_kdubu"]
+[ext_resource type="AudioStream" uid="uid://bx8wch7d1adwo" path="res://dramatic-epic-background-305293.mp3" id="7_d21ai"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdubu"]
+texture = ExtResource("3_kdubu")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_d21ai"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_kdubu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdubu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d21ai"]
+texture = ExtResource("3_q6r6c")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_rj586"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_d21ai")
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0e48y")
+
+[node name="OfficialBoard" type="Sprite2D" parent="."]
+position = Vector2(576, 352)
+texture = ExtResource("6_kdubu")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_d21ai")
+
+[node name="highlight" type="TileMapLayer" parent="."]
+self_modulate = Color(1, 1, 1, 0.576471)
+material = SubResource("ShaderMaterial_kdubu")
+tile_set = SubResource("TileSet_rj586")
+
+[node name="Player1" type="Node2D" parent="."]
+script = ExtResource("3_epypp")
+
+[node name="Player2" type="Node2D" parent="."]
+script = ExtResource("4_0hol4")
+
+[node name="PlayerButtons" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="PlayerButtons"]
+offset_left = 552.0
+offset_top = 8.0
+offset_right = 633.0
+offset_bottom = 31.0
+text = "P1 Money:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerButtons"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="PlayerButtons/HBoxContainer" groups=["troopButtons"]]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Knight"
+
+[node name="Button2" type="Button" parent="PlayerButtons/HBoxContainer" groups=["troopButtons"]]
+layout_mode = 2
+text = "Calvalry"
+
+[node name="Button3" type="Button" parent="PlayerButtons/HBoxContainer" groups=["troopButtons"]]
+layout_mode = 2
+text = "Merchant"
+
+[node name="Button4" type="Button" parent="PlayerButtons/HBoxContainer" groups=["troopButtons"]]
+layout_mode = 2
+text = "Archer"
+
+[node name="Button5" type="Button" parent="PlayerButtons/HBoxContainer" groups=["troopButtons"]]
+layout_mode = 2
+text = "Giant"
+
+[node name="Button6" type="Button" parent="PlayerButtons/HBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Attack"
+
+[node name="Button7" type="Button" parent="PlayerButtons/HBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Move"
+
+[node name="Button8" type="Button" parent="PlayerButtons/HBoxContainer"]
+layout_mode = 2
+text = "End Turn"
+
+[node name="TroopHolder" type="Node2D" parent="."]
+
+[node name="gameOverLabel" type="Label" parent="."]
+offset_left = 300.0
+offset_top = 300.0
+offset_right = 703.0
+offset_bottom = 440.0
+theme_override_font_sizes/font_size = 100
+
+[node name="statDisplay" type="Node2D" parent="."]
+visible = false
+position = Vector2(72, 48)
+
+[node name="ColorRect" type="ColorRect" parent="statDisplay"]
+offset_right = 100.0
+offset_bottom = 144.0
+color = Color(0.306923, 0.306923, 0.306923, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="statDisplay"]
+offset_right = 69.0
+offset_bottom = 131.0
+
+[node name="CostLabel" type="Label" parent="statDisplay/VBoxContainer"]
+layout_mode = 2
+text = "Cost:"
+
+[node name="HealthLabel" type="Label" parent="statDisplay/VBoxContainer"]
+layout_mode = 2
+text = "Health:"
+
+[node name="DamageLabel" type="Label" parent="statDisplay/VBoxContainer"]
+layout_mode = 2
+text = "Damage:"
+
+[node name="RangeLabel" type="Label" parent="statDisplay/VBoxContainer"]
+layout_mode = 2
+text = "Range:"
+
+[node name="SpeedLabel" type="Label" parent="statDisplay/VBoxContainer"]
+layout_mode = 2
+text = "Speed:"
+
+[node name="cancelbutton" type="Button" parent="."]
+offset_left = 433.0
+offset_top = 38.0
+offset_right = 613.0
+offset_bottom = 69.0
+text = "Cancel yo placing"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_d21ai")
+autoplay = true
+
+[connection signal="pressed" from="PlayerButtons/HBoxContainer/Button6" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="PlayerButtons/HBoxContainer/Button7" to="." method="_on_moved_pressed"]
+[connection signal="pressed" from="PlayerButtons/HBoxContainer/Button8" to="." method="endTurn"]
+[connection signal="pressed" from="cancelbutton" to="." method="_on_cancelbutton_pressed"]
